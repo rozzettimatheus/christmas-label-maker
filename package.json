@@ -1,0 +1,31 @@
+{
+  "name": "christmas-ticket-maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:script": "tsx watch src/index.ts",
+    "start:dev": "tsx watch src/server.ts"
+  },
+  "keywords": [],
+  "author": "rozzettimatheus",
+  "license": "ISC",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.1.0",
+    "@types/node": "^20.9.0",
+    "@types/pdfkit": "^0.13.2",
+    "eslint": "^8.53.0",
+    "tsx": "^4.1.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@fastify/multipart": "^8.0.0",
+    "dotenv": "^16.3.1",
+    "exceljs": "^4.4.0",
+    "fastify": "^4.24.3",
+    "pdfkit": "^0.14.0",
+    "print-tag": "^1.1.1",
+    "redis": "^4.6.10",
+    "zod": "^3.22.4"
+  }
+}
