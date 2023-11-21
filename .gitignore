@@ -1,3 +1,7 @@
 node_modules
 
 requirements*.md
+
+# tmp folders
+uploads
+pdf

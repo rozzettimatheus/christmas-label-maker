@@ -3,7 +3,7 @@ import multipart from '@fastify/multipart'
 import { ZodError } from 'zod'
 
 import { env } from './infra/env'
-import { routes } from './infra/controllers/routes'
+import { routes } from './infra/http/controllers/routes'
 
 export const app = fastify({
   logger: {

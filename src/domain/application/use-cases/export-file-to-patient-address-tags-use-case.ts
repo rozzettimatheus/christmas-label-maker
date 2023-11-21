@@ -5,6 +5,7 @@ import { FileStorage } from '@/infra/providers/storage/file-storage'
 import { FileNotFoundError } from '@/core/errors/file-not-found-error'
 import { RecordMapper } from '../mappers/map-record-to-patient'
 import { Patient } from '@/domain/enterprise/entities/patient'
+import { UnprocessableFileError } from '@/core/errors/unprocessable-file-error'
 
 type Input = {
   filename: string
@@ -43,10 +44,12 @@ export class ExportFileToPatientAddressTagsUseCase
         patients.push(RecordMapper.toDomain({ record, dictionary }))
       }
     }
-    const filteredPatients = patients.filter(
-      (p) => !p.address.isAddressIncomplete,
-    )
+    const filteredPatients = patients.filter((p) => !p.address.isIncomplete)
     await this.fileStorage.delete(filename)
-    return this.tagMaker.make(filteredPatients)
+    const output = await this.tagMaker.make(filteredPatients)
+    if (!output) {
+      throw new UnprocessableFileError()
+    }
+    return { fileUrl: output.fileUrl }
   }
 }

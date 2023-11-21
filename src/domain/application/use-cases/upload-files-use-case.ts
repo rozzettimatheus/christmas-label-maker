@@ -16,13 +16,13 @@ type Output = {
   uploaded: { filename: string }[]
 }
 
-export class UploadFileUseCase implements UseCase<Input, Output> {
+export class UploadFilesUseCase implements UseCase<Input, Output> {
   private readonly ACCEPTED_TYPES = [
     'application/vnd.ms-excel',
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   ]
 
-  constructor(private fileStorage: FileStorage) {}
+  constructor(private readonly fileStorage: FileStorage) {}
 
   async exec({ files }: Input): Promise<Output> {
     const isAllFilesAllowed = files.every(this.isFiletypeAllowed.bind(this))

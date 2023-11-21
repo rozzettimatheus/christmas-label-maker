@@ -42,7 +42,6 @@ export class RecordMapper {
   static mapEntriesIndex(header: ReaderEntry[]): EntriesIndexes {
     return Array.from(requiredFields.entries()).reduce((acc, curr) => {
       const [key, field] = curr
-      console.log(header)
       acc[field] = { index: header.findIndex((v) => v === key) }
       return acc
     }, {} as EntriesIndexes)

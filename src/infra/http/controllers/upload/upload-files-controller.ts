@@ -1,10 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 import { UnsupportedXlsFileError } from '@/core/errors/unsupported-xls-file-error'
-import { UploadFileUseCase } from '@/domain/application/use-cases/upload-file-use-case'
+import { UploadFilesUseCase } from '@/domain/application/use-cases/upload-files-use-case'
 
 export class UploadFilesController {
-  constructor(private readonly uploadFiles: UploadFileUseCase) {}
+  constructor(private readonly uploadFiles: UploadFilesUseCase) {}
 
   async handle(request: FastifyRequest, reply: FastifyReply) {
     const files = []

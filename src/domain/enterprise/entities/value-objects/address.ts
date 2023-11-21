@@ -47,7 +47,7 @@ export class Address {
     return this.props.state
   }
 
-  get isAddressIncomplete() {
+  get isIncomplete() {
     return !this.street || !this.addressNumber || !this.city || !this.zipCode
   }
 
@@ -69,6 +69,10 @@ export class Address {
     if (this.street && this.addressType && this.addressNumber) {
       const street = StringUtils.toCapitalCase(this.street)
       const addressType = StringUtils.toCapitalCase(this.addressType)
+      const complement = this.toComplement()
+      if (complement) {
+        return `${addressType}. ${street}, ${this.addressNumber} - ${complement}`
+      }
       return `${addressType}. ${street}, ${this.addressNumber}`
     }
     return null
